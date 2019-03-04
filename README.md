@@ -1,2 +1,5 @@
-# bondai
-Genuinely Open Source and Surprisingly Public Bond Credit Rating AI System.
+# Bondai
+
+[Problem](CHALLENGE.md)
+[Solution](SOLUTION.md)
+[Approach](APPROACH.md)
