@@ -10,5 +10,5 @@ In the wake of the financial crisis of 2007–2010, the credit rating agencies h
 4.	Unwillingness to spend on Human Resource – Since the rating agencies often work on a commission basis, they are reluctant to spend on human resource in order to squeeze out the maximum profits from the credit rating business.
 
 All these factors have often been claimed to have had a major role in the 2007-2010 financial crisis. Also, such accusations increase the market risk for individual investors who often do not have enough resources to conduct independent research on these debt instruments. The big players of the financial world end up exploiting the investors obligations due to lack of resources and the profit-making mindset of the rating agencies in their favours.
- 
+
 These not only leads to financial discrimination of the investors but also puts them at risk of huge financial losses and many end up losing their life long savings.
