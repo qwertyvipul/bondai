@@ -1,5 +1,5 @@
 # Bondai
 
-[Problem](CHALLENGE.md)
-[Solution](SOLUTION.md)
-[Approach](APPROACH.md)
+* [Problem](CHALLENGE.md)
+* [Solution](SOLUTION.md)
+* [Approach](APPROACH.md)
