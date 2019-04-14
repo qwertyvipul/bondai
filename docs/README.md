@@ -871,12 +871,36 @@ plt.ylabel("Change between opening and closing price")
 plt.show()
 ```
 
-
-
-
-
-
-
 ### Cummulative Sentiment vs Stockprice Fluctuations
+*Normalizaed Cummulative Sentiments*
+```python
+import math
+dates=(dataset.index.tolist())
+close=list(dataset['Close'])
+close[:]=[x/max(close) for x in close]#normalising the closing price
 
+commulative=[]
+d=Sentiment_values[0]
+for i in range(1,len(Sentiment_values)):
+  d=Sentiment_values[i]+d
+  commulative.append((d))
+  
+# Normalization
+commulative[:]=[y/max(commulative) for y in commulative]
+```
+*Grpahical Visualization*
+![Cummulative ]
+```python
+plt.plot(dates[2200:], close[2200:],linewidth=4.0,color='blue')
+plt.plot(datese[:-1], commulative,color='red')
+plt.axis([dates[2200], dates[-1],(min(min(close),min(commulative))-1),((max(close)+max(commulative)))])
+
+plt.legend(["Normalised Stock Price","Normalised Commulative Sentiment"])
+plt.title("Google LLC Stock-Sentiment Comparison")
+# plt.xticks(rotation=10)
+plt.xlabel("Dates")
+plt.ylabel("Normalised Values")
+plt.show()
+```
 ### Random Forest Model 
+
