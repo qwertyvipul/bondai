@@ -22,6 +22,7 @@ An AI Based Bond Credit Rating System
 7. bs4
 8. yahoo-finance
 9. sklearn
+10. nltk
 
 # Dataset Framework
 
@@ -903,4 +904,41 @@ plt.ylabel("Normalised Values")
 plt.show()
 ```
 ### Random Forest Model 
+*Fetching the dataset*
+```python
+dataset=pd.read_csv("gdrive/My Drive/AppleFinalData.csv")
+Sentiment = dataset.iloc[:, 6].values
+close = dataset.iloc[:, 5].values
+open_next=dataset.iloc[:, 1].values
 
+Sentiment=Sentiment[:-1]
+close=close[:-1]
+open_next=open_next[1:]
+
+change=open_next-close
+
+Sentiment=Sentiment.reshape(-1,1)
+```
+
+*Random forest regressor model*
+```python
+from sklearn.ensemble import RandomForestRegressor
+regressor=RandomForestRegressor(n_estimators=10000,random_state=0)
+regressor.fit(Sentiment,change)
+```
+
+*Graphical Visualization*
+![Price Fluctuation vs Sentiment]()
+```python
+Sentiment_grid = np.arange(min(Sentiment), max(Sentiment), 0.01)
+Sentiment_grid = Sentiment_grid.reshape((len(Sentiment_grid), 1))
+plt.scatter(Sentiment, change, color = 'red')
+plt.plot(Sentiment_grid, regressor.predict(Sentiment_grid), color = 'blue')
+colors = ("Actual Result", "Predicted Result")
+plt.legend(colors)
+plt.title('(Random Forest Model) for APPLE INC Stock V/S Sentiment')
+
+plt.xlabel('Sentiment Values')
+plt.ylabel('Change between next day opening and current closing price')
+plt.show()
+```
