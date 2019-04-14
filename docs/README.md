@@ -210,6 +210,8 @@ def main():
 
 ![Data Preprocessing Model](images/data-prep.png)
 
+![Preprocessed CSV File](images/prep-csv.png)
+
 *Setting up the files*
 ```python
 # Files to process
@@ -312,7 +314,7 @@ for ticker in ticker_list_df["Tickers"]:
             print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
             not_done_set.add(ticker)
 ```
-![Preprocessed CSV File](images/prep-csv.png)
+
 # Credit Rating Model
 
 ### Multivariate Parallel LSTM RNN Model
@@ -391,6 +393,11 @@ model.save(root_dir + "bondai_model_1.1.h5")
 ```
 
 ### Model Analysis and Prediction
+
+![Actual Data](images/actual-data.png)
+
+![Predicted Data](images/predicted-data.png)
+
 *Setting up files*
 ```python
 # Files to process
@@ -617,6 +624,11 @@ df3.to_csv(model_dir + "pred_data.csv")
 ```
 
 ### Credit Rating
+
+![Rating Formula](images/rating-formula.png)
+
+![Credit Ratings](images/credit-ratings.png)
+
 *Setting up files*
 ```python
 # Files to process
@@ -661,8 +673,45 @@ rounded_df = pd.read_csv(model_dir + "credit_ratings_1.0.csv")
 import matplotlib.pyplot as plt
 ```
 
-*Logn term credit ratings*
-![Long Term Credit Ratings]()
+*Short term credit ratings*
+![Short Term Credit Ratings - Scatter](images/st-scat.png)
+
+![Short Term Credit Ratings - Line](images/st-line.png)
+
+![Short Term Credit Ratings - Histogram](images/st-hist.png)
+
+```python
+plt.figure(figsize = (15, 6))
+plt.plot(rounded_df["act_short_term"], "b", label = "actual")
+plt.plot(rounded_df["pred_short_term"], "r", label = "predicted")
+plt.legend(loc='upper right')
+plt.yticks(rotation = 0)
+plt.xticks(rotation = 90, fontsize = 8)
+plt.xlabel("Short Term Credit Rating")
+plt.show()
+
+plt.figure(figsize = (15, 6))
+plt.plot(rounded_df["act_short_term"], "b", label = "actual", marker = "o", linestyle = "none")
+plt.plot(rounded_df["pred_short_term"], "r", label = "predicted", marker = "o", linestyle = "none")
+plt.legend(loc='upper right')
+plt.yticks(rotation = 0)
+plt.xticks(rotation = 90, fontsize = 8)
+plt.xlabel("Short Term Credit Rating")
+plt.show()
+
+plt.hist([rounded_df["act_short_term"], rounded_df["pred_short_term"]], label=['actual', 'predicted'], color = ["b", "r"])
+plt.legend(loc='upper right')
+plt.xlabel("Short Term Credit Rating")
+plt.show()
+```
+
+*Long term credit ratings*
+![Long Term Credit Ratings - Scatter](images/lt-scat.png)
+
+![Long Term Credit Ratings - Line](images/lt-line.png)
+
+![Long Term Credit Ratings - Histogram](images/lt-hist.png)
+
 ```python
 plt.figure(figsize = (15, 6))
 plt.plot(rounded_df["act_long_term"], "b", label = "actual")
@@ -689,7 +738,12 @@ plt.show()
 ```
 
 *Overall credit ratings*
-![Overall Credit Ratings]()
+![Overall Credit Ratings - Scatter](images/o-scat.png)
+
+![Overall Credit Ratings - Line](images/o-line.png)
+
+![Overall Credit Ratings - Histogram](images/o-hist.png)
+
 ```python
 plt.figure(figsize = (15, 6))
 plt.plot(rounded_df["act_overall"], "b", label = "actual")
@@ -712,33 +766,6 @@ plt.show()
 plt.hist([rounded_df["act_overall"], rounded_df["pred_overall"]], label=['actual', 'predicted'], color = ["b", "r"])
 plt.legend(loc='upper right')
 plt.xlabel("Overall Credit Rating")
-plt.show()
-```
-
-*Short term credit ratings*
-![Short Term Credit Ratings]()
-```python
-plt.figure(figsize = (15, 6))
-plt.plot(rounded_df["act_short_term"], "b", label = "actual")
-plt.plot(rounded_df["pred_short_term"], "r", label = "predicted")
-plt.legend(loc='upper right')
-plt.yticks(rotation = 0)
-plt.xticks(rotation = 90, fontsize = 8)
-plt.xlabel("Short Term Credit Rating")
-plt.show()
-
-plt.figure(figsize = (15, 6))
-plt.plot(rounded_df["act_short_term"], "b", label = "actual", marker = "o", linestyle = "none")
-plt.plot(rounded_df["pred_short_term"], "r", label = "predicted", marker = "o", linestyle = "none")
-plt.legend(loc='upper right')
-plt.yticks(rotation = 0)
-plt.xticks(rotation = 90, fontsize = 8)
-plt.xlabel("Short Term Credit Rating")
-plt.show()
-
-plt.hist([rounded_df["act_short_term"], rounded_df["pred_short_term"]], label=['actual', 'predicted'], color = ["b", "r"])
-plt.legend(loc='upper right')
-plt.xlabel("Short Term Credit Rating")
 plt.show()
 ```
 
