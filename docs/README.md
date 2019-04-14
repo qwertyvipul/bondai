@@ -732,14 +732,83 @@ plt.xlabel("Short Term Credit Rating")
 plt.show()
 ```
 
-
-
-
-
-
 # Financial Sentiment Analysis Model
 
 ### Financial Sentiment Intensity Prediction
+*Setting up the libraries*
+```python
+import nltk
+import warnings
+warnings.filterwarnings('ignore')
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+nltk.download('vader_lexicon')
+sia = SentimentIntensityAnalyzer()
+```
+
+*Business Times web scrapper*
+```python
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+from datetime import datetime, timedelta
+import time
+import pprint
+
+date_sentiments = {}
+
+for i in range(1,11):
+    page = urlopen('https://www.businesstimes.com.sg/search/google?page='+str(i)).read()#company whose data to be fetched
+    soup = BeautifulSoup(page, features="html.parser")
+    posts = soup.findAll("div", {"class": "media-body"})
+    for post in posts:
+        time.sleep(1)
+        url = post.a['href']
+        date = post.time.text
+        print(date, url)
+        try:
+            
+            link_page = urlopen(url).read()
+            
+        except:
+            break
+            
+#           url = url[:-2]  
+#             print(url)
+            link_page = urlopen(url).read()
+        link_soup = BeautifulSoup(link_page)
+        sentences = link_soup.findAll("p")
+        passage = ""
+        for sentence in sentences:
+            passage += sentence.text
+        sentiment = sia.polarity_scores(passage)['compound']
+        date_sentiments.setdefault(date, []).append(sentiment)
+
+date_sentiment = {}
+```
+*Extracting datewise sentiments*
+```python
+# Extracting datewise sentiments
+for k,v in date_sentiments.items():
+    date_sentiment[datetime.strptime(k, '%d %b %Y').date() + timedelta(days=1)] = round(sum(v)/float(len(v)),3)
+
+earliest_date = min(date_sentiment.keys())
+print(date_sentiment)
+
+Date=list(date_sentiment.keys())
+Sentiment_values=list(date_sentiment.values())
+```
+*Graphical Visualization*
+![Sentiment Graph for Google LLC]()
+```
+plt.plot(Date, Sentiment_values, '--')
+plt.axis([Date[0], Date[-1],-1,1])
+
+
+plt.title("Google LLC NewsPaper Based Finanacial Sentiment Analysis")
+plt.xlabel("Dates")
+plt.ylabel("Sentiment Score(Postive(>0),Negative(<0))")
+plt.show()
+```
 
 ### Stockprice Timeline Analysis
 
