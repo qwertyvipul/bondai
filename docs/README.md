@@ -16,6 +16,7 @@ An AI Based Bond Credit Rating System
 # Credit Rating Model
 
 ### Multivariate Parallel LSTM RNN Model
+![Abstract RNN Model](images/abstract_rnn_model.png)
 
 ### Model Analysis
 
