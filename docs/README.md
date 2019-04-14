@@ -812,6 +812,71 @@ plt.show()
 
 ### Stockprice Timeline Analysis
 
+*Setting up the libraries*
+```python
+# Importing the libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+plt.style.use('fivethirtyeight')
+!pip install pandas-datareader
+from pandas_datareader import data as pdr
+!pip install fix-yahoo-finance
+import fix_yahoo_finance as yf
+```
+
+*Getting historical stock price data from Yahoo-finance*
+```python
+share = "GOOGL"
+dataset = pdr.get_data_yahoo(share)
+dataset = dataset.dropna() # removing missing value rows
+
+openi=list(dataset['Open'])
+close=list(dataset['Close'])
+
+# Difference between opening and closing price
+change=[]
+for i,j in zip(openi,close):
+  change.append(j-i)
+```
+
+*Graphical Visualization*
+
+![Stockprice Timeline for Google LLC]()
+```python
+date=(dataset.index.tolist())
+
+plt.plot(date, openi, '--',linewidth=4.0)
+plt.plot(date, close, '--',linewidth=4.0)
+plt.axis([date[0], date[-1],int(min(min(openi),min(close))//2),int(max(openi)+max(close))])
+
+plt.legend(["Opening Price","Closing Price"])
+plt.title("Google LLC Stock Prices")
+plt.xlabel("Dates")
+plt.ylabel("Stock Price")
+plt.show()
+```
+
+![Stockprice Fluctuations]()
+```python
+plt.plot(date[-300:], change[-300:], '--',linewidth=1.0)
+# plt.plot(date[1022:], close[1022:], '--')
+plt.axis([date[-300], date[-1],int(min(change)*1.5),int(max(change)+max(change))])
+
+l=plt.legend(["Change between opening and closing price"])
+plt.title("Google LLC Stock Prices")
+#plt.xticks(rotation=90)
+plt.xlabel("Dates")
+plt.ylabel("Change between opening and closing price")
+plt.show()
+```
+
+
+
+
+
+
+
 ### Cummulative Sentiment vs Stockprice Fluctuations
 
 ### Random Forest Model 
