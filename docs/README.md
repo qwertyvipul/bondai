@@ -33,6 +33,8 @@ Working with finance technology involve dealing with tremendous amounts of data.
 ### Data Accqusition
 ![Data Accquisition Model](images/data-accq-1.png)
 
+![Raw Balance Sheet](images/raw-balance-sheet.png)
+
 *Setting up the environment*
 ```python
 # Mount Google Drive
@@ -203,7 +205,6 @@ def main():
         pd.DataFrame(list(not_done_set)).to_csv(not_done_file, header=None, index=False)
         pd.DataFrame(list(do_set)).to_csv(do_file, header=None, index=False)
 ```
-![Raw Balance Sheet](images/raw-balance-sheet.png)
 
 ### Data preprocessing
 
