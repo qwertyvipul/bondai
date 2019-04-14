@@ -32,6 +32,7 @@ Working with finance technology involve dealing with tremendous amounts of data.
 
 ### Data Accqusition
 ![Data Accquisition Model](images/data-accq-1.png)
+
 *Setting up the environment*
 ```python
 # Mount Google Drive
