@@ -799,7 +799,7 @@ Date=list(date_sentiment.keys())
 Sentiment_values=list(date_sentiment.values())
 ```
 *Graphical Visualization*
-![Sentiment Graph for Google LLC]()
+![Sentiment Graph for Google LLC](images/google-sentiments.png)
 ```
 plt.plot(Date, Sentiment_values, '--')
 plt.axis([Date[0], Date[-1],-1,1])
@@ -843,7 +843,7 @@ for i,j in zip(openi,close):
 
 *Graphical Visualization*
 
-![Stockprice Timeline for Google LLC]()
+![Stockprice Timeline for Google LLC](images/google-stockprice.png)
 ```python
 date=(dataset.index.tolist())
 
@@ -858,7 +858,7 @@ plt.ylabel("Stock Price")
 plt.show()
 ```
 
-![Stockprice Fluctuations]()
+![Stockprice Fluctuations for Google LLC](images/google-oc-change.png)
 ```python
 plt.plot(date[-300:], change[-300:], '--',linewidth=1.0)
 # plt.plot(date[1022:], close[1022:], '--')
