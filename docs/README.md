@@ -25,10 +25,13 @@ An AI Based Bond Credit Rating System
 10. nltk
 
 # Dataset Framework
+Working with finance technology involve dealing with tremendous amounts of data. Therefore we have developed this dataset framework to accquire, process, manage and update the vast amounts of data. Also, we have developed this framework keeping scalibility in mind, wherein metafiles can be used to communicate to different server instances working in coherence with the database server.
 
+![Dataset Framework Model](images/dataset-framework.png)
 
 
 ### Data Accqusition
+![Data Accquisition Model](images/data-accq-1.png)
 *Setting up the environment*
 ```python
 # Mount Google Drive
@@ -199,8 +202,12 @@ def main():
         pd.DataFrame(list(not_done_set)).to_csv(not_done_file, header=None, index=False)
         pd.DataFrame(list(do_set)).to_csv(do_file, header=None, index=False)
 ```
+![Raw Balance Sheet](images/raw-balance-sheet.png)
 
 ### Data preprocessing
+
+![Data Preprocessing Model](images/data-prep.png)
+
 *Setting up the files*
 ```python
 # Files to process
@@ -303,7 +310,7 @@ for ticker in ticker_list_df["Tickers"]:
             print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
             not_done_set.add(ticker)
 ```
-
+![Preprocessed CSV File](images/prep-csv.png)
 # Credit Rating Model
 
 ### Multivariate Parallel LSTM RNN Model
