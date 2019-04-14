@@ -303,13 +303,83 @@ for ticker in ticker_list_df["Tickers"]:
             not_done_set.add(ticker)
 ```
 
-
-
-
 # Credit Rating Model
 
 ### Multivariate Parallel LSTM RNN Model
 ![Abstract RNN Model](images/abstract-rnn-model.png)
+
+*Setting up the files*
+```python
+# Files to process
+"""
+Modify the locations below as per your directory struture.
+"""
+root_dir = "/content/vdrive/My Drive/Colab Notebooks/Projects/Bondai/SP 500/data/"
+data_dir = "/content/vdrive/My Drive/Colab Notebooks/Projects/Bondai/SP 500/data/raw/"
+prep_dir = "/content/vdrive/My Drive/Colab Notebooks/Projects/Bondai/SP 500/data/prep/"
+
+# Loading the csv tickers, train_tickers and test_tickers file
+import pandas as pd
+ticker_list_df = pd.read_csv(root_dir + "ticker_list.csv", header = None, names = ["Tickers"])
+train_tickers_df = pd.read_csv(root_dir + "train_tickers.csv", header = None, names = ["Train Tickers"])
+test_tickers_df = pd.read_csv(root_dir + "test_tickers.csv", header = None, names = ["Test Tickers"])
+
+train_set = set(train_tickers_df["Train Tickers"].tolist())
+test_set = set(test_tickers_df["Test Tickers"].tolist())
+```
+
+*Fetching and splitting*
+```python
+def in_out_split(data, n_steps):
+    for i in range(1, len(data)):
+        end_ix = i + n_steps
+        if(end_ix > len(data) - 1):
+            break
+            
+        seq_x, seq_y = data[i:end_ix, :], data[end_ix, :]
+        
+        if ticker in train_set:
+            X_train.append(seq_x)
+            y_train.append(seq_y)
+        else:
+            X_test.append(seq_x)
+            y_test.append(seq_y)
+            
+
+def read_data_from_file(ticker):
+    df = pd.read_csv(prep_dir + ticker + ".csv")
+    return df[["net_income", "op_income", "gross_profit", "crr_asst", "ncrr_asst", "crr_libt", "ncrr_libt"]].values
+    
+X_train, y_train = list(), list()
+X_test, y_test = list(), list()
+
+n_steps = 2
+
+counter = 0
+for ticker in ticker_list_df["Tickers"]:
+    counter += 1
+    print("Fetching data for: " + ticker + "(" + str(counter) + "/"+ str(len(ticker_list_df)) + ")")
+    data = read_data_from_file(ticker)
+    in_out_split(data, n_steps)
+```
+
+*Model Creation*
+```python
+from keras.models import Sequential
+from keras.layers import LSTM
+from keras.layers import Dense
+
+model = Sequential()
+model.add(LSTM(100, activation = "relu", return_sequences = True, input_shape = (n_steps, n_features)))
+model.add(LSTM(100, activation = "relu"))
+model.add(Dense(n_features))
+
+model.compile(optimizer = "adam", loss = "mse")
+model.fit(X_train, y_train, epochs = 100, batch_size = 32, shuffle = True, verbose = 1)
+
+model.save(root_dir + "bondai_model_1.1.h5")
+```
+
 
 ### Model Analysis
 
