@@ -25,8 +25,19 @@ An AI Based Bond Credit Rating System
 
 # Dataset Framework
 
+
+
 ### Data Accqusition
-First 
+*Setting up the environment*
+```python
+# Mount Google Drive
+"""
+No need to execute this block when working on local system.
+"""
+from google.colab import drive
+drive.mount("/content/vdrive", force_remount = True)
+```
+
 
 ### Data preprocessing
 
