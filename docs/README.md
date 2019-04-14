@@ -676,7 +676,7 @@ import matplotlib.pyplot as plt
 *Short term credit ratings*
 ![Short Term Credit Ratings - Scatter](images/st-scat.png)
 
-![Short Term Credit Ratings - Line](images/st-line.png)
+![Short Term Credit Ratings - Line](images/st-plot.png)
 
 ![Short Term Credit Ratings - Histogram](images/st-hist.png)
 
@@ -708,7 +708,7 @@ plt.show()
 *Long term credit ratings*
 ![Long Term Credit Ratings - Scatter](images/lt-scat.png)
 
-![Long Term Credit Ratings - Line](images/lt-line.png)
+![Long Term Credit Ratings - Line](images/lt-plot.png)
 
 ![Long Term Credit Ratings - Histogram](images/lt-hist.png)
 
@@ -740,7 +740,7 @@ plt.show()
 *Overall credit ratings*
 ![Overall Credit Ratings - Scatter](images/o-scat.png)
 
-![Overall Credit Ratings - Line](images/o-line.png)
+![Overall Credit Ratings - Line](images/o-plot.png)
 
 ![Overall Credit Ratings - Histogram](images/o-hist.png)
 
