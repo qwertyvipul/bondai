@@ -8,8 +8,8 @@ An AI Based Bond Credit Rating System
 
 ### Development Environment -
 1. Google Colaboratory
-2. IBM Watson
-3. Jupyter Notebooks
+2. IBM Watson jupyter notebook development environment
+3. Jupyter Notebook
 4. Python 3.x
 
 ### Python Libraries
@@ -325,7 +325,7 @@ for ticker in ticker_list_df["Tickers"]:
 
 # Credit Rating Model
 
-One of the main objective of our idea was to come up with machine learning models to crunch financial number and used its analysis to come up with the credit ratings of the company. So, we have developed a `Multivariate Parall LSTM RNN Network` model which analyzes the past three years financial data to predict the next financials of the company. Then have used this finacials to come up with
+One of the main objective of our idea was to come up with machine learning models to crunch financial number and used its analysis to come up with the credit ratings of the company. So, we have developed a `Multivariate Parall LSTM RNN Network` model which analyzes the past three years financial data to predict the next financials of the company. Then have used this finacials to come up with credit ratings of the company.
 
 ### Multivariate Parallel LSTM RNN Model
 ![Abstract RNN Model](images/abstract-rnn-model.png)
