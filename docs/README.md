@@ -31,6 +31,12 @@ Working with finance technology involve dealing with tremendous amounts of data.
 
 
 ### Data Accqusition
+We have used web crawlers to crawl financial data from the following two websites -
+1. Yahoo Finance (https://finance.yahoo.com/) - For the historical prices
+2. Stockrow (https://stockrow.com/) - For 10 years historical finacial data
+
+The data was collected for the S&P 500 companies, we were able to accquire the data for 482 companies and we split the downloaded data in 400 companies for the training part and 82 for the testing part.
+
 ![Data Accquisition Model](images/data-accq-1.png)
 
 ![Raw Balance Sheet](images/raw-balance-sheet.png)
@@ -208,6 +214,8 @@ def main():
 
 ### Data preprocessing
 
+To use the data in the model we needed to normalize our dataset since the raw values can vary largely in terms of actual financials of the company. So, we have used percentage change between the financial number to two consecutive years to normalize our data and then saved as csv files.
+
 ![Data Preprocessing Model](images/data-prep.png)
 
 ![Preprocessed CSV File](images/prep-csv.png)
@@ -316,6 +324,8 @@ for ticker in ticker_list_df["Tickers"]:
 ```
 
 # Credit Rating Model
+
+One of the main objective of our idea was to come up with machine learning models to crunch financial number and used its analysis to come up with the credit ratings of the company. So, we have developed a `Multivariate Parall LSTM RNN Network` model which analyzes the past three years financial data to predict the next financials of the company. Then have used this finacials to come up with
 
 ### Multivariate Parallel LSTM RNN Model
 ![Abstract RNN Model](images/abstract-rnn-model.png)
@@ -909,7 +919,7 @@ plt.show()
 ```
 
 ### Cummulative Sentiment vs Stockprice Fluctuations
-*Normalizaed Cummulative Sentiments*
+*Normalized Cummulative Sentiments*
 ```python
 import math
 dates=(dataset.index.tolist())
@@ -978,3 +988,10 @@ plt.xlabel('Sentiment Values')
 plt.ylabel('Change between next day opening and current closing price')
 plt.show()
 ```
+
+# FAQs
+
+### Where have or will you use Artificial Intelligence?
+We propose to use `Genetic Algorithms` to come up with machine learning models with efficient hyper-parameters. Then we have used this `machine learning` models to crunch financial numbers and predict financials prospects of the company in terms of next year's financials and then predict credit ratings using this financials.
+
+But, since the financial reports are published yearly or quaterly, in order to track and update those credit ratings in between this time, we have used `Natural Language Processing` to analyze news reports, business insights, government policies to come up with financial sentiment scores and accordingly track and update the credit ratings in real time.
