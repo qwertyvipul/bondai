@@ -926,7 +926,9 @@ for i in range(1,len(Sentiment_values)):
 commulative[:]=[y/max(commulative) for y in commulative]
 ```
 *Grpahical Visualization*
-![Cummulative ]
+
+![Cummulative Sentiments](images/cummulative-sentiments.png)
+
 ```python
 plt.plot(dates[2200:], close[2200:],linewidth=4.0,color='blue')
 plt.plot(datese[:-1], commulative,color='red')
