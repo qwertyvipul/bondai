@@ -909,7 +909,9 @@ plt.show()
 ```
 
 ### Cummulative Sentiment vs Stockprice Fluctuations
-*Normalized Cummulative Sentiments*
+
+![Cummulative Sentiments](images/cummulative-sentiments.png)
+
 ```python
 import math
 dates=(dataset.index.tolist())
@@ -925,9 +927,8 @@ for i in range(1,len(Sentiment_values)):
 # Normalization
 commulative[:]=[y/max(commulative) for y in commulative]
 ```
-*Grpahical Visualization*
 
-![Cummulative Sentiments](images/cummulative-sentiments.png)
+*Grpahical Visualization*
 
 ```python
 plt.plot(dates[2200:], close[2200:],linewidth=4.0,color='blue')
