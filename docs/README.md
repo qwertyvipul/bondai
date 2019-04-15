@@ -981,3 +981,21 @@ plt.xlabel('Sentiment Values')
 plt.ylabel('Change between next day opening and current closing price')
 plt.show()
 ```
+
+# Further Improvements
+
+### Genetic Algorithm Based Model Development
+
+*Individual*
+![GA Individual](images/ga-individual.png)
+
+*Strategy*
+![GA Strategy](images/ga-strategy.png)
+
+*Model*
+![GA Model](images/ga-model.png)
+
+### Improved Financial Sentiment Analysis Model
+
+*Improved Models*
+![Improved FSA Model](images/improved-fsa-model.png)
