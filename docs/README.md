@@ -967,6 +967,7 @@ regressor.fit(Sentiment,change)
 ```
 
 *Graphical Visualization*
+
 ![Price Fluctuation vs Sentiment](images/rf-google-fluctuations.png)
 ```python
 Sentiment_grid = np.arange(min(Sentiment), max(Sentiment), 0.01)
