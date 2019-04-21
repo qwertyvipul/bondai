@@ -1,5 +1,3 @@
 # Bondai
 
-* [Problem](CHALLENGE.md)
-* [Solution](SOLUTION.md)
-* [Approach](APPROACH.md)
+[View Prototype](https://thevipulsharma.github.io/bondai)
