@@ -1,6 +1,10 @@
 # BondAI
 An AI Based Bond Credit Rating System
 
+# Authors
+1. [Vipul Sharma](https://thevipulsharma.github.io)
+1. [Vikash Pathak](https://vikgo123.github.io)
+
 
 # Tech Stack
 ### Programming Languages -
